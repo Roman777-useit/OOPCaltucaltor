@@ -19,80 +19,39 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                int[] result;
-                result = new int[2];
-                Calculator calculator = new Calculator(int.Parse(textBox1.Text), int.Parse(textBox3.Text), int.Parse(textBox2.Text), int.Parse(textBox4.Text));
-                if (comboBox1.Text == "+")
-                {
-                    result = calculator.Summ();
-                    textBox5.Text = result[0].ToString();
-                    textBox6.Text = result[1].ToString();
-                    if (textBox6.Text == "0")
-                    {
-                        MessageBox.Show("Делить на ноль нельзя! Введите другие данные");
-                        textBox1.Text = "";
-                        textBox2.Text = "";
-                        textBox3.Text = "";
-                        textBox4.Text = "";
-                        textBox5.Text = "";
-                        textBox6.Text = "";
-                    }
+            
+                
+                Calculator rational1 = new Calculator(int.Parse(textBox1.Text), int.Parse(textBox2.Text));
+                Calculator rational2 = new Calculator(int.Parse(textBox3.Text), int.Parse(textBox4.Text));
+                    switch (comboBox1.Text) {
+                    case"+":
 
-                }
-                else if (comboBox1.Text == "-")
-                {
-                    result = calculator.Subtraction();
-                    textBox5.Text = result[0].ToString();
-                    textBox6.Text = result[1].ToString();
-                    if (textBox6.Text == "0")
-                    {
-                        MessageBox.Show("Делить на ноль нельзя! Введите другие данные");
-                        textBox1.Text = "";
-                        textBox2.Text = "";
-                        textBox3.Text = "";
-                        textBox4.Text = "";
-                        textBox5.Text = "";
-                        textBox6.Text = "";
-                    }
-                }
-                else if (comboBox1.Text == "*")
-                {
-                    result = calculator.Multiplication();
-                    textBox5.Text = result[0].ToString();
-                    textBox6.Text = result[1].ToString();
-                    if (textBox6.Text == "0")
-                    {
-                        MessageBox.Show("Делить на ноль нельзя! Введите другие данные");
-                        textBox1.Text = "";
-                        textBox2.Text = "";
-                        textBox3.Text = "";
-                        textBox4.Text = "";
-                        textBox5.Text = "";
-                        textBox6.Text = "";
-                    }
-                }
-                else if (comboBox1.Text == "/")
-                {
-                    result = calculator.Division();
-                    textBox5.Text = result[0].ToString();
-                    textBox6.Text = result[1].ToString();
-                    if (textBox6.Text == "0")
-                    {
-                        MessageBox.Show("Делить на ноль нельзя! Введите другие данные");
-                        textBox1.Text = "";
-                        textBox2.Text = "";
-                        textBox3.Text = "";
-                        textBox4.Text = "";
-                        textBox5.Text = "";
-                        textBox6.Text = "";
-                    }
-                }
+                    Calculator rational = rational1 + rational2;
+                    label1.Text = rational.Evklid(rational).ToString();
+                    break;
+
+                    case "-":
+                     rational = rational1 - rational2;
+                    label1.Text = rational.Evklid(rational).ToString();
+                    break;
+
+                    case "*":
+                     rational = rational1 * rational2;
+                    label1.Text = rational.Evklid(rational).ToString();
+                    break;
+
+                    case "/":
+                     rational = rational1 / rational2;
+                    label1.Text = rational.Evklid(rational).ToString();
+                    break;
             }
-            catch (Exception ex) {
-                MessageBox.Show("Проверьте корректность введенных данных");
-            }
+                
+                    
+
+                
+                
+            
+          
             
         }
 

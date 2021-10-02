@@ -8,68 +8,148 @@ namespace WindowsFormsApp1
 {
     class Calculator
     {
-        public int[] result;
-        int num1, num2, den1, den2;
+       
+        int num, den;
 
-        public Calculator(int num1, int num2, int den1, int den2)
+        public Calculator(int num, int den)
         {
 
-            this.num1 = num1;
-            this.num2 = num2;
-            this.den1 = den1;
-            this.den2 = den2;
+            this.num=num;
+            this.den=den;
         }
 
-        public int[] Summ() {
-            result = new int[2];
-            if (den1 == den2)
+        public static Calculator operator+(Calculator rational1, Calculator rational2) {
+            if (rational1.den == 0 || rational2.den == 0)
             {
-                result[0] = num1 + num2;
-                result[1] = den1;
+                throw new Exception(nameof(rational1));
+            }
+            int numResult;
+            int denResult;
+            Calculator rational;
+            if (rational1.den == rational2.den)
+            {
+                 numResult= rational1.num + rational2.num;
+                 denResult = rational1.den;
             }
             else {
-                result[0] = num1 * den2 + num2 * den1;
-                result[1] = den1 * den2;
+                numResult = rational1.num * rational2.den + rational2.num * rational1.den;
+                denResult = rational1.den * rational2.den;
 
             }
-            return result;
+            rational=new Calculator(numResult,denResult);
+            return rational;
         }
-        public int[] Subtraction()
+        public static Calculator operator -(Calculator rational1, Calculator rational2)
         {
-            result = new int[2];
-            if (den1 == den2)
+            if (rational1.den == 0 || rational2.den == 0) {
+               throw new Exception(nameof(rational1)) ;
+            }
+           int numResult;
+            int denResult;
+            Calculator rational;
+            if (rational1.den == rational2.den)
             {
-                result[0] = num1 - num2;
-                result[1] = den1;
+                numResult = rational1.num - rational2.num;
+                denResult = rational1.den;
             }
             else
             {
-                result[0] = num1 * den2 - num2 * den1;
-                result[1] = den1 * den2;
+                numResult = rational1.num * rational2.den - rational2.num * rational1.den;
+                 denResult = rational1.den * rational2.den;
 
+            }
+            rational=new Calculator(numResult,denResult);
+            return rational;
+            //запретить ввод нулей недопустить результата нуля в числ или знаменателе
+        }
+        public static Calculator operator*(Calculator rational1, Calculator rational2)
+        {
+            if (rational1.den == 0 || rational2.den == 0)
+            {
+                throw new Exception(nameof(rational1));
+            }
+
+            int numResult;
+            int denResult;
+            Calculator rational;
+            numResult = rational1.num * rational2.num;
+            denResult = rational1.den * rational2.den;
+
+
+            rational=new Calculator(numResult,denResult);
+            return rational;
+        }
+        public static Calculator operator/(Calculator rational1, Calculator rational2)
+        {
+            if (rational1.den == Math.Abs(0) || rational2.den == Math.Abs(0))
+            {
+                throw new Exception(nameof(rational1));
+            }
+
+            int numResult;
+            int denResult;
+            Calculator rational;
+
+            numResult = rational1.num * rational2.den;
+            denResult = rational1.den * rational2.num;
+
+            if (numResult == Math.Abs(0) || denResult == Math.Abs(0))
+            {
+                throw new Exception(nameof(rational1));
+            }
+            rational =new Calculator(numResult,denResult);
+            return rational;
+        }
+        public override string ToString()
+        {
+            string result="";
+            if (this.num != this.den)
+            {
+                result = $"{this.num} / {this.den}";
+
+            }
+             if (this.num == Math.Abs(0)) {
+                result = $"{0}";
+            }
+             if(this.num==this.den)
+            {
+                result = $"{this.num}";
+            }
+            if (this.den == 1) {
+                result = $"{this.num}";
             }
             return result;
         }
-        public int[] Multiplication()
-        {
-            result = new int[2];
+        public Calculator Evklid(Calculator rational) {
+            
+            int nod;
+            int numResult=Math.Abs( this.num);
+            int denResult=Math.Abs(this.den);
+            Calculator result;
+            if (numResult != denResult && numResult!=0)
+            {
+                while (numResult != denResult)
+                {
+                    if (numResult > denResult)
+                    {
+                        numResult = numResult - denResult;
+                    }
+                    else
+                    {
+                        denResult = denResult - numResult;
+                    }
+                }
+                nod = numResult;
+                numResult = this.num / nod;
+                denResult = this.den / nod;
 
-            result[0] = num1 * num2;
-            result[1] = den1 * den2;
-
-
+            }
+            else if(numResult!=0){
+                numResult = numResult / numResult;
+                denResult = denResult / denResult;
+            }
+            result = new Calculator(numResult, denResult);
             return result;
         }
-        public int[] Division()
-        {
-            result = new int[2];
-
-            result[0] = num1 * den2;
-            result[1] = den1 * num2;
-
-
-            return result;
-        }
-   
     }
 }
