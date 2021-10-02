@@ -19,6 +19,10 @@ namespace WindowsFormsApp1
         }
 
         public static Calculator operator+(Calculator rational1, Calculator rational2) {
+            if (rational1.den == 0 || rational2.den == 0)
+            {
+                throw new Exception(nameof(rational1));
+            }
             int numResult;
             int denResult;
             Calculator rational;
@@ -35,8 +39,11 @@ namespace WindowsFormsApp1
             rational=new Calculator(numResult,denResult);
             return rational;
         }
-        public static Calculator operator-(Calculator rational1, Calculator rational2)
+        public static Calculator operator -(Calculator rational1, Calculator rational2)
         {
+            if (rational1.den == 0 || rational2.den == 0) {
+               throw new Exception(nameof(rational1)) ;
+            }
            int numResult;
             int denResult;
             Calculator rational;
@@ -57,7 +64,11 @@ namespace WindowsFormsApp1
         }
         public static Calculator operator*(Calculator rational1, Calculator rational2)
         {
-           
+            if (rational1.den == 0 || rational2.den == 0)
+            {
+                throw new Exception(nameof(rational1));
+            }
+
             int numResult;
             int denResult;
             Calculator rational;
@@ -70,7 +81,11 @@ namespace WindowsFormsApp1
         }
         public static Calculator operator/(Calculator rational1, Calculator rational2)
         {
-            
+            if (rational1.den == Math.Abs(0) || rational2.den == Math.Abs(0))
+            {
+                throw new Exception(nameof(rational1));
+            }
+
             int numResult;
             int denResult;
             Calculator rational;
@@ -78,19 +93,29 @@ namespace WindowsFormsApp1
             numResult = rational1.num * rational2.den;
             denResult = rational1.den * rational2.num;
 
-
-            rational=new Calculator(numResult,denResult);
+            if (numResult == Math.Abs(0) || denResult == Math.Abs(0))
+            {
+                throw new Exception(nameof(rational1));
+            }
+            rational =new Calculator(numResult,denResult);
             return rational;
         }
         public override string ToString()
         {
-           string result;
+            string result="";
             if (this.num != this.den)
             {
                 result = $"{this.num} / {this.den}";
 
             }
-            else {
+             if (this.num == Math.Abs(0)) {
+                result = $"{0}";
+            }
+             if(this.num==this.den)
+            {
+                result = $"{this.num}";
+            }
+            if (this.den == 1) {
                 result = $"{this.num}";
             }
             return result;
@@ -98,10 +123,10 @@ namespace WindowsFormsApp1
         public Calculator Evklid(Calculator rational) {
             
             int nod;
-            int numResult=this.num;
-            int denResult=this.den;
+            int numResult=Math.Abs( this.num);
+            int denResult=Math.Abs(this.den);
             Calculator result;
-            if (numResult != denResult)
+            if (numResult != denResult && numResult!=0)
             {
                 while (numResult != denResult)
                 {
@@ -119,7 +144,7 @@ namespace WindowsFormsApp1
                 denResult = this.den / nod;
 
             }
-            else {
+            else if(numResult!=0){
                 numResult = numResult / numResult;
                 denResult = denResult / denResult;
             }
