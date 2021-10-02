@@ -26,3 +26,12 @@ C:\Users\TEMP\Source\Repos\Roman777-useit\OOPCaltucaltor\obj\Debug\WindowsFormsA
 C:\Users\TEMP\Source\Repos\Roman777-useit\OOPCaltucaltor\bin\Debug\WindowsFormsApp1.exe.config
 C:\Users\TEMP\Source\Repos\Roman777-useit\OOPCaltucaltor\bin\Debug\WindowsFormsApp1.exe
 C:\Users\TEMP\Source\Repos\Roman777-useit\OOPCaltucaltor\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\YaRn.20\Documents\GitHub\OOPCaltucaltor\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\YaRn.20\Documents\GitHub\OOPCaltucaltor\bin\Debug\WindowsFormsApp1.exe
+C:\Users\YaRn.20\Documents\GitHub\OOPCaltucaltor\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\YaRn.20\Documents\GitHub\OOPCaltucaltor\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
+C:\Users\YaRn.20\Documents\GitHub\OOPCaltucaltor\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\YaRn.20\Documents\GitHub\OOPCaltucaltor\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\YaRn.20\Documents\GitHub\OOPCaltucaltor\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\YaRn.20\Documents\GitHub\OOPCaltucaltor\obj\Debug\WindowsFormsApp1.exe
+C:\Users\YaRn.20\Documents\GitHub\OOPCaltucaltor\obj\Debug\WindowsFormsApp1.pdb
