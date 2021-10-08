@@ -6,47 +6,57 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    class Calculator
+    class Rational
     {
-       
+
         int num, den;
 
-        public Calculator(int num, int den)
+        public Rational(int num, int den)
         {
+            if (num.GetType() != typeof(Int32)) {
+                throw new ArgumentException();
+            }
+             if((Convert.ToString(num)=="") || (Convert.ToString(den) == "")) {
+                throw new Exception();
+            }
+                this.num = num;
+                this.den = den;
+            
 
-            this.num=num;
-            this.den=den;
         }
 
-        public static Calculator operator+(Calculator rational1, Calculator rational2) {
+        public static Rational operator +(Rational rational1, Rational rational2)
+        {
             if (rational1.den == 0 || rational2.den == 0)
             {
-                throw new Exception(nameof(rational1));
+                throw new DivideByZeroException();
             }
             int numResult;
             int denResult;
-            Calculator rational;
+            Rational rational;
             if (rational1.den == rational2.den)
             {
-                 numResult= rational1.num + rational2.num;
-                 denResult = rational1.den;
+                numResult = rational1.num + rational2.num;
+                denResult = rational1.den;
             }
-            else {
+            else
+            {
                 numResult = rational1.num * rational2.den + rational2.num * rational1.den;
                 denResult = rational1.den * rational2.den;
 
             }
-            rational=new Calculator(numResult,denResult);
+            rational = new Rational(numResult, denResult);
             return rational;
         }
-        public static Calculator operator -(Calculator rational1, Calculator rational2)
+        public static Rational operator -(Rational rational1, Rational rational2)
         {
-            if (rational1.den == 0 || rational2.den == 0) {
-               throw new Exception(nameof(rational1)) ;
+            if (rational1.den == 0 || rational2.den == 0)
+            {
+                throw new DivideByZeroException();
             }
-           int numResult;
+            int numResult;
             int denResult;
-            Calculator rational;
+            Rational rational;
             if (rational1.den == rational2.den)
             {
                 numResult = rational1.num - rational2.num;
@@ -55,78 +65,75 @@ namespace WindowsFormsApp1
             else
             {
                 numResult = rational1.num * rational2.den - rational2.num * rational1.den;
-                 denResult = rational1.den * rational2.den;
+                denResult = rational1.den * rational2.den;
 
             }
-            rational=new Calculator(numResult,denResult);
+            rational = new Rational(numResult, denResult);
             return rational;
             //запретить ввод нулей недопустить результата нуля в числ или знаменателе
         }
-        public static Calculator operator*(Calculator rational1, Calculator rational2)
+        public static Rational operator *(Rational rational1, Rational rational2)
         {
             if (rational1.den == 0 || rational2.den == 0)
             {
-                throw new Exception(nameof(rational1));
+                throw new DivideByZeroException();
             }
 
             int numResult;
             int denResult;
-            Calculator rational;
+            Rational rational;
             numResult = rational1.num * rational2.num;
             denResult = rational1.den * rational2.den;
 
 
-            rational=new Calculator(numResult,denResult);
+            rational = new Rational(numResult, denResult);
             return rational;
         }
-        public static Calculator operator/(Calculator rational1, Calculator rational2)
+        public static Rational operator /(Rational rational1, Rational rational2)
         {
-            if (rational1.den == Math.Abs(0) || rational2.den == Math.Abs(0))
+            if (rational1.den == 0 || rational2.den == 0)
             {
-                throw new Exception(nameof(rational1));
+                throw new DivideByZeroException();
             }
 
-            int numResult;
-            int denResult;
-            Calculator rational;
 
-            numResult = rational1.num * rational2.den;
-            denResult = rational1.den * rational2.num;
+
+            int numResult = rational1.num * rational2.den;
+            int denResult = rational1.den * rational2.num;
 
             if (numResult == Math.Abs(0) || denResult == Math.Abs(0))
             {
                 throw new Exception(nameof(rational1));
             }
-            rational =new Calculator(numResult,denResult);
+            Rational rational = new Rational(numResult, denResult);
             return rational;
         }
         public override string ToString()
         {
-            string result="";
+            string result = "";
             if (this.num != this.den)
             {
                 result = $"{this.num} / {this.den}";
 
             }
-             if (this.num == Math.Abs(0)) {
+            if (this.num == Math.Abs(0))
+            {
                 result = $"{0}";
             }
-             if(this.num==this.den)
+            if (this.den == 1)
             {
-                result = $"{this.num}";
-            }
-            if (this.den == 1) {
                 result = $"{this.num}";
             }
             return result;
         }
-        public Calculator Evklid(Calculator rational) {
+        public Rational Reduction()
+        {
+
             
-            int nod;
-            int numResult=Math.Abs( this.num);
-            int denResult=Math.Abs(this.den);
-            Calculator result;
-            if (numResult != denResult && numResult!=0)
+            int numResult = Math.Abs(this.num);
+            int denResult = Math.Abs(this.den);
+            
+            if (numResult != denResult && numResult != 0)
             {
                 while (numResult != denResult)
                 {
@@ -139,16 +146,17 @@ namespace WindowsFormsApp1
                         denResult = denResult - numResult;
                     }
                 }
-                nod = numResult;
+                int nod = numResult;
                 numResult = this.num / nod;
                 denResult = this.den / nod;
 
             }
-            else if(numResult!=0){
+            else if (numResult == denResult)
+            {
                 numResult = numResult / numResult;
                 denResult = denResult / denResult;
             }
-            result = new Calculator(numResult, denResult);
+            Rational result = new Rational(numResult, denResult);
             return result;
         }
     }

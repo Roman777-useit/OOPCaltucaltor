@@ -47,6 +47,7 @@ namespace WindowsFormsApp1
             this.textBox1.Size = new System.Drawing.Size(50, 50);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // textBox2
             // 
@@ -57,6 +58,7 @@ namespace WindowsFormsApp1
             this.textBox2.Size = new System.Drawing.Size(50, 50);
             this.textBox2.TabIndex = 1;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyUp);
             // 
             // textBox3
             // 
@@ -67,6 +69,7 @@ namespace WindowsFormsApp1
             this.textBox3.Size = new System.Drawing.Size(50, 50);
             this.textBox3.TabIndex = 2;
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyUp);
             // 
             // textBox4
             // 
@@ -77,6 +80,7 @@ namespace WindowsFormsApp1
             this.textBox4.Size = new System.Drawing.Size(50, 50);
             this.textBox4.TabIndex = 3;
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox4.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox4_KeyUp);
             // 
             // comboBox1
             // 
@@ -107,6 +111,7 @@ namespace WindowsFormsApp1
             // label1
             // 
             this.label1.BackColor = System.Drawing.SystemColors.Info;
+            this.label1.Enabled = false;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.label1.ForeColor = System.Drawing.SystemColors.InfoText;
             this.label1.Location = new System.Drawing.Point(87, 184);
