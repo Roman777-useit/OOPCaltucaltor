@@ -13,15 +13,17 @@ namespace WindowsFormsApp1
 
         public Rational(int num, int den)
         {
-            if (num.GetType() != typeof(Int32)) {
+            if (num.GetType() != typeof(Int32))
+            {
                 throw new ArgumentException();
             }
-             if((Convert.ToString(num)=="") || (Convert.ToString(den) == "")) {
+            if ((Convert.ToString(num) == "") || (Convert.ToString(den) == ""))
+            {
                 throw new Exception();
             }
-                this.num = num;
-                this.den = den;
-            
+            this.num = num;
+            this.den = den;
+
 
         }
 
@@ -129,10 +131,10 @@ namespace WindowsFormsApp1
         public Rational Reduction()
         {
 
-            
+
             int numResult = Math.Abs(this.num);
             int denResult = Math.Abs(this.den);
-            
+
             if (numResult != denResult && numResult != 0)
             {
                 while (numResult != denResult)

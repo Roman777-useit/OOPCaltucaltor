@@ -54,7 +54,8 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show(ex.Message);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
 
