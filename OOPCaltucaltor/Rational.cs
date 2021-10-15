@@ -8,25 +8,12 @@ namespace WindowsFormsApp1
 {
     class Rational
     {
-
         int num, den;
-
         public Rational(int num, int den)
         {
-            if (num.GetType() != typeof(Int32))
-            {
-                throw new ArgumentException();
-            }
-            if ((Convert.ToString(num) == "") || (Convert.ToString(den) == ""))
-            {
-                throw new Exception();
-            }
             this.num = num;
             this.den = den;
-
-
         }
-
         public static Rational operator +(Rational rational1, Rational rational2)
         {
             if (rational1.den == 0 || rational2.den == 0)
@@ -36,17 +23,8 @@ namespace WindowsFormsApp1
             int numResult;
             int denResult;
             Rational rational;
-            if (rational1.den == rational2.den)
-            {
-                numResult = rational1.num + rational2.num;
-                denResult = rational1.den;
-            }
-            else
-            {
-                numResult = rational1.num * rational2.den + rational2.num * rational1.den;
-                denResult = rational1.den * rational2.den;
-
-            }
+            numResult = rational1.num * rational2.den + rational2.num * rational1.den;
+            denResult = rational1.den * rational2.den;
             rational = new Rational(numResult, denResult);
             return rational;
         }
@@ -59,20 +37,10 @@ namespace WindowsFormsApp1
             int numResult;
             int denResult;
             Rational rational;
-            if (rational1.den == rational2.den)
-            {
-                numResult = rational1.num - rational2.num;
-                denResult = rational1.den;
-            }
-            else
-            {
-                numResult = rational1.num * rational2.den - rational2.num * rational1.den;
-                denResult = rational1.den * rational2.den;
-
-            }
+            numResult = rational1.num * rational2.den - rational2.num * rational1.den;
+            denResult = rational1.den * rational2.den;
             rational = new Rational(numResult, denResult);
             return rational;
-            //запретить ввод нулей недопустить результата нуля в числ или знаменателе
         }
         public static Rational operator *(Rational rational1, Rational rational2)
         {
@@ -80,14 +48,11 @@ namespace WindowsFormsApp1
             {
                 throw new DivideByZeroException();
             }
-
             int numResult;
             int denResult;
             Rational rational;
             numResult = rational1.num * rational2.num;
             denResult = rational1.den * rational2.den;
-
-
             rational = new Rational(numResult, denResult);
             return rational;
         }
@@ -97,15 +62,11 @@ namespace WindowsFormsApp1
             {
                 throw new DivideByZeroException();
             }
-
-
-
             int numResult = rational1.num * rational2.den;
             int denResult = rational1.den * rational2.num;
-
             if (numResult == Math.Abs(0) || denResult == Math.Abs(0))
             {
-                throw new Exception(nameof(rational1));
+                throw new DivideByZeroException();
             }
             Rational rational = new Rational(numResult, denResult);
             return rational;
@@ -116,7 +77,6 @@ namespace WindowsFormsApp1
             if (this.num != this.den)
             {
                 result = $"{this.num} / {this.den}";
-
             }
             if (this.num == Math.Abs(0))
             {
@@ -130,11 +90,8 @@ namespace WindowsFormsApp1
         }
         public Rational Reduction()
         {
-
-
             int numResult = Math.Abs(this.num);
             int denResult = Math.Abs(this.den);
-
             if (numResult != denResult && numResult != 0)
             {
                 while (numResult != denResult)
@@ -151,7 +108,6 @@ namespace WindowsFormsApp1
                 int nod = numResult;
                 numResult = this.num / nod;
                 denResult = this.den / nod;
-
             }
             else if (numResult == denResult)
             {

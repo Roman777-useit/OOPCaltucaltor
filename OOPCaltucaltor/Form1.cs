@@ -16,33 +16,49 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+        protected void checkType(string text)
+        {
+            if (text != "")
+            {
+                try
+                {
+                    Convert.ToDouble(text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Введите число");
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox4.Text = "";
+                }
+            }
 
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-
-
             try
             {
+                if ((textBox1.Text == "") || (textBox2.Text == "") || (textBox3.Text == "") || (textBox4.Text == ""))
+                {
+                    throw new NullReferenceException();
+                }
                 Rational rational1 = new Rational(int.Parse(textBox1.Text), int.Parse(textBox2.Text));
                 Rational rational2 = new Rational(int.Parse(textBox3.Text), int.Parse(textBox4.Text));
                 switch (comboBox1.Text)
                 {
                     case "+":
-
                         Rational rational = rational1 + rational2;
                         label1.Text = rational.Reduction().ToString();
                         break;
-
                     case "-":
                         rational = rational1 - rational2;
                         label1.Text = rational.Reduction().ToString();
                         break;
-
                     case "*":
                         rational = rational1 * rational2;
                         label1.Text = rational.Reduction().ToString();
                         break;
-
                     case "/":
                         rational = rational1 / rational2;
                         label1.Text = rational.Reduction().ToString();
@@ -52,77 +68,33 @@ namespace WindowsFormsApp1
 
             catch (DivideByZeroException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Попытка деления на ноль!");
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show("Введите значение в поле!");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            checkType(textBox1.Text);
 
         }
-
-        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        private void textBox2_Leave(object sender, EventArgs e)
         {
-            if (e.KeyData != Keys.Back && e.KeyData != Keys.Tab && e.KeyData != Keys.Enter && e.KeyData != Keys.Space)
-            {
-                try
-                {
-                    Convert.ToDouble(textBox1.Text);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Введите число");
-                    textBox1.Text = "";
-                }
-            }
+            checkType(textBox2.Text);
         }
-
-        private void textBox2_KeyUp(object sender, KeyEventArgs e)
+        private void textBox3_Leave(object sender, EventArgs e)
         {
-            if (e.KeyData != Keys.Back && e.KeyData != Keys.Tab && e.KeyData != Keys.Enter && e.KeyData != Keys.Space)
-            {
-                try
-                {
-                    Convert.ToDouble(textBox2.Text);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Введите число");
-                    textBox2.Text = "";
-                }
-            }
+            checkType(textBox3.Text);
         }
-
-        private void textBox3_KeyUp(object sender, KeyEventArgs e)
+        private void textBox4_Leave(object sender, EventArgs e)
         {
-            if (e.KeyData != Keys.Back && e.KeyData != Keys.Tab && e.KeyData != Keys.Enter && e.KeyData != Keys.Space)
-            {
-                try
-                {
-                    Convert.ToDouble(textBox3.Text);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Введите число");
-                    textBox3.Text = "";
-                }
-            }
-        }
-
-        private void textBox4_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData != Keys.Back && e.KeyData != Keys.Tab && e.KeyData != Keys.Enter && e.KeyData != Keys.Space)
-            {
-                try
-                {
-                    Convert.ToDouble(textBox4.Text);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Введите число");
-                    textBox4.Text = "";
-                }
-            }
+            checkType(textBox4.Text);
         }
     }
 

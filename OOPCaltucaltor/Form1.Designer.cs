@@ -47,7 +47,7 @@ namespace WindowsFormsApp1
             this.textBox1.Size = new System.Drawing.Size(50, 50);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // textBox2
             // 
@@ -58,7 +58,7 @@ namespace WindowsFormsApp1
             this.textBox2.Size = new System.Drawing.Size(50, 50);
             this.textBox2.TabIndex = 1;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyUp);
+            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
             // 
             // textBox3
             // 
@@ -69,7 +69,7 @@ namespace WindowsFormsApp1
             this.textBox3.Size = new System.Drawing.Size(50, 50);
             this.textBox3.TabIndex = 2;
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyUp);
+            this.textBox3.Leave += new System.EventHandler(this.textBox3_Leave);
             // 
             // textBox4
             // 
@@ -80,7 +80,7 @@ namespace WindowsFormsApp1
             this.textBox4.Size = new System.Drawing.Size(50, 50);
             this.textBox4.TabIndex = 3;
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox4.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox4_KeyUp);
+            this.textBox4.Leave += new System.EventHandler(this.textBox4_Leave);
             // 
             // comboBox1
             // 
