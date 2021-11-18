@@ -7,10 +7,10 @@ using System.Drawing;
 
 namespace task_paint
 {
-    class Figure
+     abstract class Figure
     {
 
-        public virtual void Draw(Graphics gr, Rectangle rectangle, int SelectIndex) {
+        public virtual void Draw(Graphics gr, int[] points) {
         
         }
     }

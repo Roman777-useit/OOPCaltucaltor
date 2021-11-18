@@ -34,16 +34,15 @@ namespace task_paint
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             Graphics gr = panel1.CreateGraphics();
-            Figure rectangle = new MyRectangle();
-            Figure circle = new MyCircle();
-            Figure wagon = new Wagon();
-            figures.Add(rectangle);
-            figures.Add(circle);
-            figures.Add(wagon);
+           
+           
+            
+            
             foreach (Figure figure in figures)
             {
-                figure.Draw(gr, GetPoint(), comboBox1.SelectedIndex);
+                figure.Draw(gr, GetPoint());
             }
+            
            
             
         }
@@ -54,6 +53,7 @@ namespace task_paint
         {
             IsMouseDown = true;
             PointStart = e.Location;
+            
         }
 
 
@@ -65,14 +65,22 @@ namespace task_paint
                 PointEnd = e.Location;
             }
             IsMouseDown = false;
+ 
+
         }
-        protected Rectangle GetPoint() {
-            Rectangle rectangle = new Rectangle();
-            rectangle.X = Math.Min(PointStart.X,PointEnd.X);
-            rectangle.Y = Math.Min(PointStart.Y, PointEnd.Y);
-            rectangle.Height = Math.Abs(PointStart.Y - PointEnd.Y);
-            rectangle.Width = Math.Abs(PointStart.X - PointEnd.X);
-            return rectangle;
+        protected int[] GetPoint() {
+            //Rectangle rectangle = new Rectangle();
+            //rectangle.X = Math.Min(PointStart.X, PointEnd.X);
+            //rectangle.Y = Math.Min(PointStart.Y, PointEnd.Y);
+            //rectangle.Height = Math.Abs(PointStart.Y - PointEnd.Y);
+            //rectangle.Width = Math.Abs(PointStart.X - PointEnd.X);
+            int [] points = new int[4];
+            points[0] = PointStart.X;
+            points[1] = PointStart.Y;
+            points[2] = PointEnd.X;
+            points[3] = PointEnd.X;
+
+            return points;
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
@@ -81,6 +89,50 @@ namespace task_paint
                 PointEnd = e.Location;
             }
             panel1.Refresh();
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            Figure rectangle = new MyRectangle();
+            if (figures.Count > 0)
+            {
+                figures.Clear();
+            }
+            figures.Add(rectangle);
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            Figure circle = new MyCircle();
+            if (figures.Count > 0)
+            {
+                figures.Clear();
+            }
+            figures.Add(circle);
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            Figure wagon = new Wagon();
+            if (figures.Count>0)
+            {
+                figures.Clear();
+            }
+             figures.Add(wagon); 
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            
+            Figure wagonCoal = new WagonCoal();
+            if (figures.Count > 0)
+            {
+                figures.Clear();
+            }
+            figures.Add(wagonCoal);
+
+
+
         }
     }
 }

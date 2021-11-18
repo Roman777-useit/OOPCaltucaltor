@@ -11,13 +11,13 @@ namespace task_paint
     {
         public Wagon() { }
 
-        public override void Draw(Graphics gr, Rectangle rectangle, int SelectIndex)
+        public override void Draw(Graphics gr, int [] points )
         {
-            if (SelectIndex == 2) {
-                gr.DrawRectangle(new Pen(Color.Black), rectangle);
-                gr.DrawEllipse(new Pen(Color.Red), rectangle.X, rectangle.Y + 50, rectangle.Width/3, rectangle.Height/3);
-                gr.DrawEllipse(new Pen(Color.Red), rectangle.X+50, rectangle.Y + 50, rectangle.Width / 3, rectangle.Height / 3);
-            }
+            
+                //gr.DrawRectangle(new Pen(Color.Black), rectangle);
+                //gr.DrawEllipse(new Pen(Color.Red), rectangle.X, rectangle.Y + 50, rectangle.Width/3, rectangle.Height/3);
+                //gr.DrawEllipse(new Pen(Color.Red), rectangle.X+50, rectangle.Y + 50, rectangle.Width / 3, rectangle.Height / 3);
+            
 
             
         }

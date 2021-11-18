@@ -14,11 +14,20 @@ namespace task_paint
         {
 
         }
-        public override void Draw(Graphics gr, Rectangle rectangle, int SelectIndex) {
+        public override void Draw(Graphics gr, int [] points) {
+            //points[0] = PointStart.X;
+            //points[1] = PointStart.Y;
+            //points[2] = PointEnd.X;
+            //points[3] = PointEnd.Y;
+            Rectangle rectangle = new Rectangle();
+            rectangle.X = Math.Min(points[0], points[2]);
+            rectangle.Y = Math.Min(points[1], points[3]);
+            rectangle.Height = Math.Abs(points[1] - points[3]);
+            rectangle.Width = Math.Abs(points[0] - points[3]);
             
-            if (SelectIndex == 0) {
-                gr.DrawRectangle(new Pen(Color.Black), rectangle);
-            }
+
+            gr.DrawRectangle(new Pen(Color.Black),rectangle );
+            
             
         }
     }
