@@ -19,9 +19,9 @@ namespace task_paint
         }
        
         List<Figure> figures = new List<Figure>();
-        public bool IsMouseDown=false;
-        public Point PointStart;
-        public Point PointEnd;
+        protected bool IsMouseDown=false;
+        protected Point PointStart;
+        protected Point PointEnd;
 
 
 
@@ -34,7 +34,7 @@ namespace task_paint
             
             foreach (Figure figure in figures)
             {
-                figure.Draw(gr, GetPoint());
+                figure.Draw(gr);
             }
             
            
@@ -59,8 +59,28 @@ namespace task_paint
                 PointEnd = e.Location;
             }
             IsMouseDown = false;
- 
 
+            if (radioButton1.Checked)
+
+            {
+                Figure rectangle = new MyRectangle(GetPoint());
+                figures.Add(rectangle);
+            }
+            if (radioButton2.Checked)
+            {
+                Figure circle = new MyCircle(GetPoint());
+                figures.Add(circle);
+            }
+            if (radioButton3.Checked)
+            {
+                Figure wagon = new Wagon(GetPoint());
+                figures.Add(wagon);
+            }
+            if (radioButton4.Checked)
+            {
+                Figure wagonCoal = new WagonCoal(GetPoint());
+                figures.Add(wagonCoal);
+            }
         }
         protected int[] GetPoint() {
             //Rectangle rectangle = new Rectangle();
@@ -85,48 +105,6 @@ namespace task_paint
             panel1.Refresh();
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            Figure rectangle = new MyRectangle();
-            if (figures.Count > 0)
-            {
-                figures.Clear();
-            }
-            figures.Add(rectangle);
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            Figure circle = new MyCircle();
-            if (figures.Count > 0)
-            {
-                figures.Clear();
-            }
-            figures.Add(circle);
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            Figure wagon = new Wagon();
-            if (figures.Count>0)
-            {
-                figures.Clear();
-            }
-             figures.Add(wagon); 
-        }
-
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-            
-            Figure wagonCoal = new WagonCoal();
-            if (figures.Count > 0)
-            {
-                figures.Clear();
-            }
-            figures.Add(wagonCoal);
-
-
-
-        }
+        
     }
 }

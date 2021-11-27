@@ -9,9 +9,16 @@ namespace task_paint
 {
     class Wagon:Figure
     {
-        public Wagon() { }
+        int[] points;
+        //MyRectangle rectangle;
+        //MyCircle circle;
 
-        public override void Draw(Graphics gr, int [] points )
+        public Wagon(int[] points)
+        {
+            this.points = points;
+        }
+
+        public override void Draw(Graphics gr )
         {
             //points[0] = PointStart.X;
             //points[1] = PointStart.Y;

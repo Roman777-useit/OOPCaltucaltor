@@ -9,12 +9,14 @@ namespace task_paint
 {
     class MyRectangle:Figure
     {
+        int[] points;
 
-        public MyRectangle()
+        public MyRectangle(int[] points)
         {
-
+            this.points = points;
         }
-        public override void Draw(Graphics gr, int [] points) {
+
+        public override void Draw(Graphics gr) {
             //points[0] = PointStart.X;
             //points[1] = PointStart.Y;
             //points[2] = PointEnd.X;

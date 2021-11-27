@@ -9,15 +9,22 @@ namespace task_paint
 {
     class WagonCoal:Wagon
     {
-        public WagonCoal() { }
+        int[] points;
 
-        public override void Draw(Graphics gr, int[] points)
+
+        public WagonCoal(int[] points):base(points)
+        {
+            this.points = points;
+            
+        }
+
+        public override void Draw(Graphics gr)
         {
             //points[0] = PointStart.X;
             //points[1] = PointStart.Y;
             //points[2] = PointEnd.X;
             //points[3] = PointEnd.Y;
-            base.Draw(gr, points);
+            base.Draw(gr);
             Rectangle rectangle = new Rectangle();
             rectangle.X = Math.Min(points[0], points[2]);
             rectangle.Y = Math.Min(points[1], points[3]);

@@ -9,8 +9,8 @@ namespace task_paint
 {
      abstract class Figure
     {
-
-        public virtual void Draw(Graphics gr, int[] points) {
+        int x, y;
+        public virtual void Draw(Graphics gr) {
         
         }
     }
