@@ -23,7 +23,15 @@ namespace task_paint
         protected Point PointStart;
         protected Point PointEnd;
 
+        public struct GetPoint
+        {
 
+            public int PointStartX { get; set; }
+            public int PointStartY { get; set; }
+            public int PointEndX { get; set; }
+            public int PointEndY { get; set; }
+
+        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -47,7 +55,10 @@ namespace task_paint
         {
             IsMouseDown = true;
             PointStart = e.Location;
-            
+            GetPoint getPoint = new GetPoint();
+            getPoint.PointStartX = PointStart.X;
+            getPoint.PointStartY = PointStart.Y;
+
         }
 
 
@@ -63,46 +74,38 @@ namespace task_paint
             if (radioButton1.Checked)
 
             {
-                Figure rectangle = new MyRectangle(GetPoint());
+                Figure rectangle = new MyRectangle(new GetPoint());
                 figures.Add(rectangle);
             }
             if (radioButton2.Checked)
             {
-                Figure circle = new MyCircle(GetPoint());
+                Figure circle = new MyCircle(new GetPoint());
                 figures.Add(circle);
             }
             if (radioButton3.Checked)
             {
-                Figure wagon = new Wagon(GetPoint());
+                Figure wagon = new Wagon(new MyRectangle(new GetPoint()),new MyCircle(new GetPoint()), new GetPoint());
                 figures.Add(wagon);
             }
             if (radioButton4.Checked)
             {
-                Figure wagonCoal = new WagonCoal(GetPoint());
+                Figure wagonCoal = new WagonCoal(new GetPoint());
                 figures.Add(wagonCoal);
             }
+            panel1.Refresh();
         }
-        protected int[] GetPoint() {
-            //Rectangle rectangle = new Rectangle();
-            //rectangle.X = Math.Min(PointStart.X, PointEnd.X);
-            //rectangle.Y = Math.Min(PointStart.Y, PointEnd.Y);
-            //rectangle.Height = Math.Abs(PointStart.Y - PointEnd.Y);
-            //rectangle.Width = Math.Abs(PointStart.X - PointEnd.X);
-            int [] points = new int[4];
-            points[0] = PointStart.X;
-            points[1] = PointStart.Y;
-            points[2] = PointEnd.X;
-            points[3] = PointEnd.Y;
-
-            return points;
-        }
+        
+        
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (IsMouseDown == true) {
                 PointEnd = e.Location;
+                GetPoint getPoint = new GetPoint();
+                getPoint.PointEndX = PointEnd.X;
+                getPoint.PointEndY = PointEnd.Y;
             }
-            panel1.Refresh();
+            
         }
 
         

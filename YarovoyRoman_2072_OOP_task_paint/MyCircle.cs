@@ -7,29 +7,35 @@ using System.Drawing;
 using System.Windows.Forms;
 namespace task_paint
 {
-    class MyCircle:Figure
+    class MyCircle : Figure
     {
-        int[] points;
-     
+        int PointStartX;
+        int PointStartY;
+        int PointEndX;
+        int PointEndY;
 
-        public MyCircle(int[] points)
+
+        public MyCircle(Form1.GetPoint getPoints)
         {
-            this.points = points;
+             PointStartX = getPoints.PointStartX;
+             PointStartY = getPoints.PointStartY;
+             PointEndX = getPoints.PointEndX;
+             PointEndY = getPoints.PointEndY;
         }
 
         public override void Draw(Graphics gr) {
-            //points[0] = PointStart.X;
-            //points[1] = PointStart.Y;
-            //points[2] = PointEnd.X;
-            //points[3] = PointEnd.Y;
-            Rectangle rectangle = new Rectangle();
-            rectangle.X = Math.Min(points[0], points[2]);
-            rectangle.Y = Math.Min(points[1], points[3]);
-            rectangle.Height = Math.Abs(points[1] - points[3]);
-            rectangle.Width = Math.Abs(points[0] - points[2]);
+        //points[0] = PointStart.X;
+        //points[1] = PointStart.Y;
+        //points[2] = PointEnd.X;
+        //points[3] = PointEnd.Y;
+        Rectangle rectangle = new Rectangle();
+        rectangle.X = Math.Min(PointStartX, PointEndX);
+        rectangle.Y = Math.Min(PointStartY, PointEndY);
+        rectangle.Height = Math.Abs(PointStartY - PointEndY);
+        rectangle.Width = Math.Abs(PointStartX - PointEndX);
 
 
-            gr.DrawEllipse(new Pen(Color.Black), rectangle);
+        gr.DrawEllipse(new Pen(Color.Black), rectangle);
             
            
         }

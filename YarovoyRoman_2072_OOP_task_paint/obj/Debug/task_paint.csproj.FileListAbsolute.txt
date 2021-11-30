@@ -15,5 +15,4 @@ C:\Users\YaRn.20\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_ta
 C:\Users\YaRn.20\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_task_paint\obj\Debug\task_paint.csproj.GenerateResource.cache
 C:\Users\YaRn.20\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_task_paint\obj\Debug\task_paint.exe
 C:\Users\YaRn.20\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_task_paint\obj\Debug\task_paint.pdb
-C:\Users\YaRn.20\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_task_paint\obj\Debug\task_paint.csproj.AssemblyReference.cache
-C:\Users\YaRn.20\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_task_paint\obj\Debug\task_paint.csproj.CoreCompileInputs.cache
+C:\Users\YaRn.20\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_task_paint\obj\Debug\task_paint.csprojAssemblyReference.cache

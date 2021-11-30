@@ -9,29 +9,29 @@ namespace task_paint
 {
     class Wagon:Figure
     {
-        int[] points;
-        //MyRectangle rectangle;
-        //MyCircle circle;
 
-        public Wagon(int[] points)
+        Figure rectangle;
+        Figure circle;
+        int PointStartX;
+        int PointStartY;
+        int PointEndX;
+        int PointEndY;
+
+
+        public Wagon(MyRectangle rectangle,MyCircle circle, Form1.GetPoint getPoints)
         {
-            this.points = points;
+
+            this.rectangle = rectangle;
+            this.circle = circle;
+            
         }
 
         public override void Draw(Graphics gr )
-        {
-            //points[0] = PointStart.X;
-            //points[1] = PointStart.Y;
-            //points[2] = PointEnd.X;
-            //points[3] = PointEnd.Y;
-            Rectangle rectangle = new Rectangle();
-            rectangle.X = Math.Min(points[0], points[2]);
-            rectangle.Y = Math.Min(points[1], points[3]);
-            rectangle.Height = Math.Abs(points[1] - points[3]);
-            rectangle.Width = Math.Abs(points[0] - points[2]);
-            gr.DrawRectangle(new Pen(Color.Black), rectangle);
-            gr.DrawEllipse(new Pen(Color.Red), points[0], points[3], rectangle.Width / 3, rectangle.Height / 3);
-            gr.DrawEllipse(new Pen(Color.Red), points[2]- rectangle.Width / 3, points[3], rectangle.Width / 3, rectangle.Height / 3);
+        {   
+            
+            rectangle.Draw(gr);
+            gr.DrawEllipse(new Pen(Color.Red), PointStartX, PointEndY, (PointEndX - PointStartX) / 3, (PointEndY - PointStartY) / 3);
+            gr.DrawEllipse(new Pen(Color.Red), PointEndX - (PointEndX - PointStartX) / 3, PointEndY, (PointEndX - PointStartX) / 3, (PointEndY- PointStartY) / 3);
 
 
 
