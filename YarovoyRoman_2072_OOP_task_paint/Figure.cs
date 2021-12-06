@@ -9,7 +9,7 @@ namespace task_paint
 {
      abstract class Figure:IFigure
     {
-        int x, y;
+        public int x, y;
         public virtual void Draw(Graphics gr) {
         
         }

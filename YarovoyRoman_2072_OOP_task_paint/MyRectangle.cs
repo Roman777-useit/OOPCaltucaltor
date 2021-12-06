@@ -41,5 +41,9 @@ namespace task_paint
             
             
         }
+        public override void Move(Figure figure, GetPoint getPoint)
+        {
+           
+        }
     }
 }

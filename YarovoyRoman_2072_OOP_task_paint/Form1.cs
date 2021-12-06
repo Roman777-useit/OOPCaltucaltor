@@ -20,21 +20,23 @@ namespace task_paint
 
  
         protected bool IsMouseDown=false;
+        protected bool InFigure = false;
         protected Point PointStart;
         protected Point PointEnd;
 
   
         GetPoint getPoint = new GetPoint(0, 0, 0, 0);
+        Container container = new Container();
 
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             Graphics gr = panel1.CreateGraphics();
-            Container container = new Container();
+            
            
             
             
-            foreach (Figure figure in container.figures)
+            foreach (Figure figure in container)
             {
                 figure.Draw(gr);
             }
@@ -52,7 +54,7 @@ namespace task_paint
             
             getPoint.PointStartX = PointStart.X;
             getPoint.PointStartY = PointStart.Y;
-
+            
         }
 
 
@@ -70,22 +72,26 @@ namespace task_paint
 
             {
                 Figure rectangle = new MyRectangle(getPoint);
-                figures.Add(rectangle);
+                container.AddItem(rectangle);
             }
             if (radioButton2.Checked)
             {
                 Figure circle = new MyCircle(getPoint);
-                figures.Add(circle);
+                container.AddItem(circle);
             }
             if (radioButton3.Checked)
             {
                 Figure wagon = new Wagon(new MyRectangle(getPoint) ,getPoint);
-                figures.Add(wagon);
+                container.AddItem(wagon);
             }
             if (radioButton4.Checked)
             {
                 Figure wagonCoal = new WagonCoal(getPoint,new MyRectangle(getPoint), new MyCircle(getPoint));
-                figures.Add(wagonCoal);
+                container.AddItem(wagonCoal);
+            }
+            if (radioButton5.Checked)
+            {
+               
             }
             panel1.Refresh();
             
