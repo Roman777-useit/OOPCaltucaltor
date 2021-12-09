@@ -9,35 +9,42 @@ namespace task_paint
 {
     class MyCircle : Figure
     {
-        int PointStartX;
-        int PointStartY;
-        int PointEndX;
-        int PointEndY;
+
+        Points point;
 
 
-        public MyCircle(GetPoint getPoints)
+        public MyCircle(Points point)
         {
-             PointStartX = getPoints.PointStartX;
-             PointStartY = getPoints.PointStartY;
-             PointEndX = getPoints.PointEndX;
-             PointEndY = getPoints.PointEndY;
+            this.point = point;
+            
         }
 
         public override void Draw(Graphics gr) {
-        //points[0] = PointStart.X;
-        //points[1] = PointStart.Y;
-        //points[2] = PointEnd.X;
-        //points[3] = PointEnd.Y;
-        Rectangle rectangle = new Rectangle();
-        rectangle.X = Math.Min(PointStartX, PointEndX);
-        rectangle.Y = Math.Min(PointStartY, PointEndY);
-        rectangle.Height = Math.Abs(PointStartY - PointEndY);
-        rectangle.Width = Math.Abs(PointStartX - PointEndX);
+            x = point.PointStartX;
+            y = point.PointStartY;
+            Rectangle rectangle = new Rectangle();
+        rectangle.X = Math.Min(x, point.PointEndX);
+        rectangle.Y = Math.Min(y, point.PointEndY);
+        rectangle.Height = Math.Abs(y - point.PointEndY)/2;
+        rectangle.Width = Math.Abs(x - point.PointEndX)/2;
 
 
-        gr.DrawEllipse(new Pen(Color.Black), rectangle);
+        gr.DrawEllipse(new Pen(Color.Black,5), rectangle);
             
            
+        }
+        public override void Move(Graphics gr, int pointX, int pointY)
+        {
+            x = point.PointStartX;
+            y = point.PointStartY;
+            Rectangle rectangle = new Rectangle();
+            rectangle.X = pointX;
+            rectangle.Y = pointY;
+            rectangle.Height = Math.Abs(y - point.PointEndY) / 2;
+            rectangle.Width = Math.Abs(x - point.PointEndX) / 2;
+
+
+            gr.DrawEllipse(new Pen(Color.Black, 5), rectangle);
         }
     }
 }

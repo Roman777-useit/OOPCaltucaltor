@@ -4,46 +4,49 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace task_paint
 {
     class MyRectangle:Figure
     {
 
-        int PointStartX;
-        int PointStartY;
-        int PointEndX;
-        int PointEndY;
 
-        public MyRectangle(GetPoint getPoints)
+
+        Points point;
+        public MyRectangle(Points point)
         {
-            PointStartX = getPoints.PointStartX;
-            PointStartY = getPoints.PointStartY;
-            PointEndX = getPoints.PointEndX;
-            PointEndY = getPoints.PointEndY;
+            this.point = point;
+           
+           
         }
 
         public override void Draw(Graphics gr) {
-            //points[0] = PointStart.X;
-            //points[1] = PointStart.Y;
-            //points[2] = PointEnd.X;
-            //points[3] = PointEnd.Y;
+            
+            x = point.PointStartX;
+            y = point.PointStartY;
+            Rectangle rectangle = new Rectangle();
+            rectangle.X = Math.Min(x, point.PointEndX);
+            rectangle.Y = Math.Min(y, point.PointEndY);
+            rectangle.Height = Math.Abs(y - point.PointEndY);
+            rectangle.Width = Math.Abs(x - point.PointEndX);
 
+
+            gr.DrawRectangle(new Pen(Color.Black,5),rectangle );
+            
+            
+        }
+        public override void Move(Graphics gr,int pointX,int pointY)
+        {
             
             Rectangle rectangle = new Rectangle();
-            rectangle.X = Math.Min(PointStartX, PointEndX);
-            rectangle.Y = Math.Min(PointStartY, PointEndY);
-            rectangle.Height = Math.Abs(PointStartY - PointEndY);
-            rectangle.Width = Math.Abs(PointStartX - PointEndX);
+            rectangle.X = pointX;
+            rectangle.Y = pointY;
+            rectangle.Height = Math.Abs(point.PointStartY - point.PointEndY);
+            rectangle.Width = Math.Abs(point.PointStartX - point.PointEndX);
+            gr.DrawRectangle(new Pen(Color.Black,5), rectangle);
 
+        }
 
-            gr.DrawRectangle(new Pen(Color.Black),rectangle );
-            
-            
-        }
-        public override void Move(Figure figure, GetPoint getPoint)
-        {
-           
-        }
     }
 }

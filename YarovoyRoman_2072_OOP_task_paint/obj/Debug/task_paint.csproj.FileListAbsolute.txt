@@ -26,3 +26,13 @@ C:\Users\User\source\repos\YarovoyRoman_2072_OOP-task_paint\YarovoyRoman_2072_OO
 C:\Users\User\source\repos\YarovoyRoman_2072_OOP-task_paint\YarovoyRoman_2072_OOP_task_paint\bin\Debug\task_paint.exe.config
 C:\Users\User\source\repos\YarovoyRoman_2072_OOP-task_paint\YarovoyRoman_2072_OOP_task_paint\bin\Debug\task_paint.exe
 C:\Users\User\source\repos\YarovoyRoman_2072_OOP-task_paint\YarovoyRoman_2072_OOP_task_paint\bin\Debug\task_paint.pdb
+C:\Users\Админ\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_task_paint\obj\Debug\task_paint.csprojAssemblyReference.cache
+C:\Users\Админ\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_task_paint\obj\Debug\task_paint.Form1.resources
+C:\Users\Админ\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_task_paint\obj\Debug\task_paint.Properties.Resources.resources
+C:\Users\Админ\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_task_paint\obj\Debug\task_paint.csproj.GenerateResource.cache
+C:\Users\Админ\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_task_paint\obj\Debug\task_paint.csproj.CoreCompileInputs.cache
+C:\Users\Админ\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_task_paint\obj\Debug\task_paint.exe
+C:\Users\Админ\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_task_paint\obj\Debug\task_paint.pdb
+C:\Users\Админ\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_task_paint\bin\Debug\task_paint.exe.config
+C:\Users\Админ\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_task_paint\bin\Debug\task_paint.exe
+C:\Users\Админ\Documents\GitHub\YarovoyRoman_2072_OOP\YarovoyRoman_2072_OOP_task_paint\bin\Debug\task_paint.pdb

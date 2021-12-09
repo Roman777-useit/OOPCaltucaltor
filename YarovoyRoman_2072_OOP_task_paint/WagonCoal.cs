@@ -10,18 +10,12 @@ namespace task_paint
     class WagonCoal : Wagon
     {
 
-        int PointStartX;
-        int PointStartY;
-        int PointEndX;
-        int PointEndY;
+        Tr tr;
 
-        public WagonCoal(GetPoint getPoints, MyRectangle myRectangle, MyCircle myCircle) : base(myRectangle, getPoints)
+        public WagonCoal(Points point) : base(point)
         {
-
-            PointStartX = getPoints.PointStartX;
-            PointStartY = getPoints.PointStartY;
-            PointEndX = getPoints.PointEndX;
-            PointEndY = getPoints.PointEndY;
+            
+            tr = new Tr(point);
 
         }
 
@@ -29,11 +23,17 @@ namespace task_paint
         {
 
             base.Draw(gr);
-
-            PointF[] point = { new Point(PointStartX, PointStartY), new Point(PointStartX + (PointEndX - PointStartX) / 2, PointStartY - 50), new Point(PointEndX, PointStartY) };
-            gr.DrawPolygon(new Pen(Color.DarkGoldenrod), point);
+            tr.Draw(gr);
+            
 
 
         }
+        public override void Move(Graphics gr, int pointX, int pointY)
+        {
+            base.Move(gr, pointX, pointY);
+            tr.Move(gr, pointX, pointY);
+        }
+
+
     }
 }

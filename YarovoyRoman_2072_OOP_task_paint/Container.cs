@@ -5,22 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-
+using System.Windows.Forms;
 
 namespace task_paint
 {
-    class Container : IEnumerable,IEnumerator
+    class Container : IEnumerable
     {
-        private List<Figure> figures = new List<Figure>();
+        protected List<Figure> figures = new List<Figure>();
+
+
+        public object Current()
+        {
+            return figures;
+            throw new NotImplementedException();
+        }
         
-
-        public object Current => throw new NotImplementedException();
-
         public  IEnumerator GetEnumerator()
         {
            
             return figures.GetEnumerator();
-            throw new NotImplementedException();
+     
         }
 
         public void AddItem(Figure figure) {
@@ -33,20 +37,31 @@ namespace task_paint
             throw new NotImplementedException();
         }
 
-        public void Reset()
+        public void Reset(Figure figure)
+        {
+            figures.Remove(figure);
+           
+        }
+        public  Figure IsPointInside(int pointX,int pointY, Points point)
         {
             
-            throw new NotImplementedException();
-        }
-        public bool IsCoordinats(Point point) {
-            bool IsBelong=false;
-           
-            foreach (Figure figure in figures) { 
-            if((figure.x==point.X) && (figure.y == point.Y)){
-                    IsBelong = true;
+            bool IsPointsInside1 = false;
+            foreach (Figure figure in figures) {
+                if ((pointX < point.PointEndX) && (pointX > point.PointStartX) && ((pointY < point.PointEndY) && (pointY > point.PointStartY)))
+                {
+                    IsPointsInside1 = true;
+                }
+                else {
+                    IsPointsInside1 = false;
+                }
+                if (IsPointsInside1 == true)
+                {
+                    return figure;
                 }
             }
-            return IsBelong;
+ 
+         return null;
         }
+
     }
 }
