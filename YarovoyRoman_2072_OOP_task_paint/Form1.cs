@@ -27,8 +27,8 @@ namespace task_paint
         
         Points point = new Points(0, 0, 0, 0);
         Container container = new Container();
-        
-        
+        Figure figureMove = null;
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -39,10 +39,12 @@ namespace task_paint
             
             foreach (Figure figure in container)
             {
+
                 figure.Draw(gr);
+
                 if (radioMove.Checked)
                 {
-                figure.Move(gr,PointMoveEnd.X,PointMoveEnd.Y);
+                figure.Move(PointMoveEnd.X,PointMoveEnd.Y);
                 }
             }
             
@@ -69,6 +71,8 @@ namespace task_paint
                 PointMoveStart.Y = e.Y;
 
             }
+            
+            figureMove=figureMove.IsPointInside(e.X,e.Y);
             
 
 
@@ -123,12 +127,7 @@ namespace task_paint
                 IsMouseDown = false;
 
 
-                Figure figureMove = container.IsPointInside(PointMoveStart.X,PointMoveStart.Y, point);
-                if (figureMove!=null) {
-                    container.Reset(figureMove);
-                    container.AddItem(figureMove);
-                    panel1.Refresh();
-                }
+                
                 
             }
 
@@ -139,15 +138,15 @@ namespace task_paint
             }
             if (radioRemove.Checked)
             {
-                Figure figureMove = container.IsPointInside(e.X, e.Y, point);
+    
                 if (figureMove != null)
-                {
-
+                { 
                     container.Reset(figureMove);
                 }
             }
+          
             panel1.Refresh();
-            
+           
         }
 
         

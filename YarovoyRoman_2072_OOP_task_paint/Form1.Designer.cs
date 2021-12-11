@@ -110,7 +110,6 @@
             this.radioMove.TabStop = true;
             this.radioMove.Text = "Move";
             this.radioMove.UseVisualStyleBackColor = true;
-
             // 
             // radioButton6
             // 
@@ -123,7 +122,6 @@
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "Train";
             this.radioButton6.UseVisualStyleBackColor = true;
-
             // 
             // radioRemove
             // 
@@ -136,7 +134,6 @@
             this.radioRemove.TabStop = true;
             this.radioRemove.Text = "Remove";
             this.radioRemove.UseVisualStyleBackColor = true;
-
             // 
             // Form1
             // 

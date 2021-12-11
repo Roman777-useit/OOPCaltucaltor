@@ -7,12 +7,12 @@ using System.Drawing;
 
 namespace task_paint
 {
-    class Train:Wagon
+    class Train:Figure
     {
         Wagon wagon2;
         Wagon wagon3;
         Points point;
-        public Train(Points point):base(point)
+        public Train(Points point)
         {
             this.point = point;
             
@@ -31,20 +31,10 @@ namespace task_paint
             wagon2.Draw(gr);
             wagon3.Draw(gr);
         }
-        public override void Move(Graphics gr, int pointX, int pointY)
+        public override void Move(int pointX, int pointY)
         {
-
-            int width = point.PointEndX - point.PointStartX;
-            int height = point.PointEndY - point.PointStartY;
-            point.PointStartX = point.PointStartX+width;
-            point.PointEndX = point.PointStartX + 2*width;
-            wagon2 = new Wagon(point);
-            point.PointStartX = point.PointStartX + 2 * width;
-            point.PointEndX = point.PointStartX + 3*width;
-            wagon3 = new Wagon(point);
-            base.Draw(gr);
-            wagon2.Draw(gr);
-            wagon3.Draw(gr);
+            point.PointStartX = pointX;
+            point.PointStartY = pointY;
 
         }
     }

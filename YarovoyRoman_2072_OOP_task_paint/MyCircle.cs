@@ -20,9 +20,9 @@ namespace task_paint
         }
 
         public override void Draw(Graphics gr) {
-            x = point.PointStartX;
-            y = point.PointStartY;
-            Rectangle rectangle = new Rectangle();
+        x = point.PointStartX;
+        y = point.PointStartY;
+        Rectangle rectangle = new Rectangle();
         rectangle.X = Math.Min(x, point.PointEndX);
         rectangle.Y = Math.Min(y, point.PointEndY);
         rectangle.Height = Math.Abs(y - point.PointEndY)/2;
@@ -33,18 +33,11 @@ namespace task_paint
             
            
         }
-        public override void Move(Graphics gr, int pointX, int pointY)
+        public override void Move(int pointX, int pointY)
         {
             x = point.PointStartX;
             y = point.PointStartY;
-            Rectangle rectangle = new Rectangle();
-            rectangle.X = pointX;
-            rectangle.Y = pointY;
-            rectangle.Height = Math.Abs(y - point.PointEndY) / 2;
-            rectangle.Width = Math.Abs(x - point.PointEndX) / 2;
-
-
-            gr.DrawEllipse(new Pen(Color.Black, 5), rectangle);
+            
         }
     }
 }

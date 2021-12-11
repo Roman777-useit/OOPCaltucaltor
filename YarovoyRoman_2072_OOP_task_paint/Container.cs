@@ -42,26 +42,7 @@ namespace task_paint
             figures.Remove(figure);
            
         }
-        public  Figure IsPointInside(int pointX,int pointY, Points point)
-        {
-            
-            bool IsPointsInside1 = false;
-            foreach (Figure figure in figures) {
-                if ((pointX < point.PointEndX) && (pointX > point.PointStartX) && ((pointY < point.PointEndY) && (pointY > point.PointStartY)))
-                {
-                    IsPointsInside1 = true;
-                }
-                else {
-                    IsPointsInside1 = false;
-                }
-                if (IsPointsInside1 == true)
-                {
-                    return figure;
-                }
-            }
- 
-         return null;
-        }
+
 
     }
 }

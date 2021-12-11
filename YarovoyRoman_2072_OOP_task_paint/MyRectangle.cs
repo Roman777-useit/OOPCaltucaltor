@@ -36,17 +36,38 @@ namespace task_paint
             
             
         }
-        public override void Move(Graphics gr,int pointX,int pointY)
+        public override void Move(int pointX,int pointY)
         {
             
-            Rectangle rectangle = new Rectangle();
-            rectangle.X = pointX;
-            rectangle.Y = pointY;
-            rectangle.Height = Math.Abs(point.PointStartY - point.PointEndY);
-            rectangle.Width = Math.Abs(point.PointStartX - point.PointEndX);
-            gr.DrawRectangle(new Pen(Color.Black,5), rectangle);
+            x = pointX;
+            y = pointY;
+           
+           
 
         }
+        public override Figure IsPointInside(int pointX, int pointY)
+        {
+            Container container = new Container();
+            bool IsPointsInside1 = false;
+            
+                if ((pointX < point.PointEndX) && (pointX > point.PointStartX) && ((pointY < point.PointEndY) && (pointY > point.PointStartY)))
+                {
+                    IsPointsInside1 = true;
+                }
+                else
+                {
+                    IsPointsInside1 = false;
+                }
+                if (IsPointsInside1 == true)
+                {
+                return container.GetType();
+                }
+                else
+                {
+                return null;
+                    }
+            
+        
 
     }
 }

@@ -28,10 +28,10 @@ namespace task_paint
 
 
         }
-        public override void Move(Graphics gr, int pointX, int pointY)
+        public override void Move(int pointX, int pointY)
         {
-            base.Move(gr, pointX, pointY);
-            tr.Move(gr, pointX, pointY);
+            base.Move(pointX, pointY);
+            tr.Move(pointX, pointY);
         }
 
 
