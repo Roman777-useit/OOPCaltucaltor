@@ -13,10 +13,14 @@ namespace task_paint
         Points point;
 
 
-        public MyCircle(Points point)
+        public MyCircle(int PointStartX, int PointEndX, int PointStartY, int PointEndY)
         {
-            this.point = point;
-            
+            point.PointStartX = PointStartX;
+            point.PointEndX = PointEndX;
+            point.PointStartY = PointStartY;
+            point.PointEndY = PointEndY;
+
+
         }
 
         public override void Draw(Graphics gr) {
@@ -33,11 +37,41 @@ namespace task_paint
             
            
         }
-        public override void Move(int pointX, int pointY)
+        public override Figure Move(int pointX, int pointY,int pointEndX, int pointEndY)
         {
-            x = point.PointStartX;
-            y = point.PointStartY;
-            
+            int deltaX = Math.Abs(pointX - point.PointEndX);
+            int deltaY = Math.Abs(pointY - point.PointEndY);
+            Figure figure = new MyCircle( pointX,  pointY,  pointEndX,  pointEndY);
+            return figure;
+
+        }
+        public override Figure IsPointInside(int pointX, int pointY)
+        {
+
+            bool IsPointsInside1;
+            Figure figure = new MyCircle(point.PointStartX, point.PointEndX, point.PointStartY, point.PointEndY);
+
+            if ((pointX <= point.PointEndX) && (pointX >= point.PointStartX) && ((pointY <= point.PointEndY) && (pointY >= point.PointStartY)))
+            {
+                IsPointsInside1 = true;
+            }
+            else
+            {
+                IsPointsInside1 = false;
+            }
+            if (IsPointsInside1 == true)
+            {
+                return figure;
+
+            }
+            else
+            {
+                return null;
+            }
+
+
+
+
         }
     }
 }

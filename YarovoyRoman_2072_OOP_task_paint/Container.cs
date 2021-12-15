@@ -40,7 +40,9 @@ namespace task_paint
         public void Reset(Figure figure)
         {
             figures.Remove(figure);
-           
+        }
+        public int Count() {
+            return figures.Count;
         }
 
 

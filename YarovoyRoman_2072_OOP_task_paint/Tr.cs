@@ -11,9 +11,14 @@ namespace task_paint
     {
         Points point;
 
-        public Tr(Points point)
+        public Tr(int PointStartX, int PointEndX, int PointStartY, int PointEndY)
         {
-            this.point = point;
+            point.PointStartX = PointStartX;
+            point.PointEndX = PointEndX;
+            point.PointStartY = PointStartY;
+            point.PointEndY = PointEndY;
+
+
         }
 
         public override void Draw(Graphics gr)
@@ -28,10 +33,12 @@ namespace task_paint
 
 
         }
-        public override void Move(int pointX, int pointY)
+        public override Figure Move(int pointX, int pointEndX, int pointY, int pointEndY)
         {
-            x = pointX;
-            y = pointY;
+            int deltaX = Math.Abs(pointX - point.PointEndX);
+            int deltaY = Math.Abs(pointY - point.PointEndY);
+            Figure figure = new Tr( pointX,  pointEndX,  pointY,  pointEndY);
+            return figure;
 
 
         }

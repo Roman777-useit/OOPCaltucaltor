@@ -14,15 +14,14 @@ namespace task_paint
         public virtual void Draw(Graphics gr) {
         
         }
-        public virtual void Move(int pointX, int pointY) { 
+        public virtual Figure Move(int pointX, int pointY, int pointEndX, int pointEndY) {
+            return null;
         
         }
-        public virtual Figure IsPointInside(int pointX, int pointY)
+        public  virtual Figure IsPointInside(int pointX, int pointY)
         {
+                    return null;
 
-
-
-            return null;
         }
 
     }

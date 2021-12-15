@@ -8,49 +8,47 @@ using System.Windows.Forms;
 
 namespace task_paint
 {
-    class MyRectangle:Figure
+    class MyRectangle : Figure
     {
 
 
-
+        
         Points point;
-        public MyRectangle(Points point)
+        public MyRectangle(int PointStartX, int PointEndX, int PointStartY, int PointEndY)
         {
-            this.point = point;
-           
-           
+          
+            point.PointStartX = PointStartX;
+            point.PointStartY = PointStartY;
+            point.PointEndX = PointEndX;
+            point.PointEndY = PointEndY;
         }
-
-        public override void Draw(Graphics gr) {
-            
+        public override void Draw(Graphics gr)
+        {
             x = point.PointStartX;
             y = point.PointStartY;
             Rectangle rectangle = new Rectangle();
-            rectangle.X = Math.Min(x, point.PointEndX);
-            rectangle.Y = Math.Min(y, point.PointEndY);
-            rectangle.Height = Math.Abs(y - point.PointEndY);
-            rectangle.Width = Math.Abs(x - point.PointEndX);
-
-
-            gr.DrawRectangle(new Pen(Color.Black,5),rectangle );
-            
-            
+            rectangle.X = x;
+            rectangle.Y =y;
+            rectangle.Height = Math.Abs(point.PointStartY - point.PointEndY);
+            rectangle.Width = Math.Abs(point.PointStartX - point.PointEndX);
+            gr.DrawRectangle(new Pen(Color.Black, 5), rectangle);
         }
-        public override void Move(int pointX,int pointY)
+        public override Figure Move(int pointX, int pointEndX,int pointY,int pointEndY)
         {
+
+            Figure figure = new MyRectangle( pointX,  pointEndX,  pointY,  pointEndY);
             
-            x = pointX;
-            y = pointY;
-           
-           
+            return figure;
+
 
         }
         public override Figure IsPointInside(int pointX, int pointY)
         {
-            Container container = new Container();
-            bool IsPointsInside1 = false;
+           
+            bool IsPointsInside1;
+            Figure figure = new MyRectangle(point.PointStartX, point.PointEndX, point.PointStartY, point.PointEndY);
             
-                if ((pointX < point.PointEndX) && (pointX > point.PointStartX) && ((pointY < point.PointEndY) && (pointY > point.PointStartY)))
+                if ((pointX <= point.PointEndX) && (pointX >= point.PointStartX) && ((pointY <= point.PointEndY) && (pointY >= point.PointStartY)))
                 {
                     IsPointsInside1 = true;
                 }
@@ -58,16 +56,18 @@ namespace task_paint
                 {
                     IsPointsInside1 = false;
                 }
-                if (IsPointsInside1 == true)
-                {
-                return container.GetType();
-                }
-                else
-                {
-                return null;
-                    }
-            
-        
+            if (IsPointsInside1 == true)
+            {
+                return figure;
 
+            }
+            else{ 
+                return null;
+                }
+
+           
+
+
+        }
     }
 }

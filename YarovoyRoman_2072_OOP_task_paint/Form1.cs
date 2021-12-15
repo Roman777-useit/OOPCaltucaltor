@@ -22,30 +22,18 @@ namespace task_paint
         protected bool IsMouseDown=false;
         protected Point PointStart;
         protected Point PointEnd;
-        protected Point PointMoveStart;
-        protected Point PointMoveEnd;
-        
-        Points point = new Points(0, 0, 0, 0);
+        Points point = new Points(0, 0, 0, 0,0,0,0,0);
         Container container = new Container();
-        Figure figureMove = null;
+        Figure figureMove;
 
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             Graphics gr = panel1.CreateGraphics();
-            
-           
-            
-            
+
             foreach (Figure figure in container)
             {
-
-                figure.Draw(gr);
-
-                if (radioMove.Checked)
-                {
-                figure.Move(PointMoveEnd.X,PointMoveEnd.Y);
-                }
+                figure.Draw(gr); 
             }
             
 
@@ -56,23 +44,25 @@ namespace task_paint
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
-            
-                
-            if (!radioMove.Checked&&!radioRemove.Checked) {
+
+
+            if (!radioMove.Checked)
+            {
                 IsMouseDown = true;
                 PointStart = e.Location;
                 point.PointStartX = PointStart.X;
                 point.PointStartY = PointStart.Y;
             }
             if (radioMove.Checked) {
-                IsMouseDown = true;
-
-                PointMoveStart.X = e.X;
-                PointMoveStart.Y = e.Y;
-
+                figureMove = null;
+                foreach (Figure figure in container) {
+                    if (figure.IsPointInside(e.X, e.Y) != null) {
+                        figureMove = figure.IsPointInside(e.X, e.Y);
+                    };
+                }
+                
             }
             
-            figureMove=figureMove.IsPointInside(e.X,e.Y);
             
 
 
@@ -82,7 +72,8 @@ namespace task_paint
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (!radioMove.Checked) {
+            if (!radioMove.Checked)
+            {
                 if (IsMouseDown == true)
                 {
                     PointEnd = e.Location;
@@ -91,6 +82,7 @@ namespace task_paint
                 }
                 IsMouseDown = false;
 
+              
             }
 
 
@@ -98,33 +90,36 @@ namespace task_paint
             if (radioButton1.Checked)
 
             {
-                Figure rectangle = new MyRectangle(point);
+                Figure rectangle = new MyRectangle( point.PointStartX, point.PointEndX, point.PointStartY, point.PointEndY);
                 container.AddItem(rectangle);
             }
             if (radioButton2.Checked)
             {
-                Figure circle = new MyCircle(point);
+                Figure circle = new MyCircle(point.PointStartX, point.PointEndX, point.PointStartY, point.PointEndY);
                 container.AddItem(circle);
             }
             if (radioButton3.Checked)
             {
-                Figure wagon = new Wagon(point);
+                Figure wagon = new Wagon(point.PointStartX, point.PointEndX, point.PointStartY, point.PointEndY);
                 container.AddItem(wagon);
             }
             if (radioButton4.Checked)
             {
-                Figure wagonCoal = new WagonCoal(point);
+                Figure wagonCoal = new WagonCoal(point.PointStartX, point.PointEndX, point.PointStartY, point.PointEndY);
                 container.AddItem(wagonCoal);
             }
             if (radioMove.Checked)
             {
-                if (IsMouseDown == true)
-                {
-                    PointMoveEnd.X = e.X;
-                    PointMoveEnd.Y = e.Y;
+                point.PointMoveStartX = e.X;
+                point.PointMoveStartY = e.Y;
+                point.PointMoveEndX = point.PointMoveStartX + Math.Abs(point.PointStartX - point.PointEndX);
+                point.PointMoveEndY = point.PointMoveStartY + Math.Abs(point.PointStartY - point.PointEndY);
 
+                if (figureMove != null) {
+                    container.Reset(figureMove);
+                    container.AddItem(figureMove.Move(point.PointMoveStartX, point.PointMoveEndX, point.PointMoveStartY, point.PointMoveEndY));
+                   
                 }
-                IsMouseDown = false;
 
 
                 
@@ -133,12 +128,12 @@ namespace task_paint
 
             if (radioButton6.Checked)
             {
-                Figure train = new Train(point);
+                Figure train = new Train(point.PointStartX, point.PointEndX, point.PointStartY, point.PointEndY);
                 container.AddItem(train);
             }
             if (radioRemove.Checked)
             {
-    
+                   
                 if (figureMove != null)
                 { 
                     container.Reset(figureMove);
