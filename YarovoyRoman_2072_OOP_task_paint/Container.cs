@@ -37,13 +37,11 @@ namespace task_paint
             throw new NotImplementedException();
         }
 
-        public void Reset(Figure figure)
+        public void Reset()
         {
-            figures.Remove(figure);
+            figures.Clear();
         }
-        public int Count() {
-            return figures.Count;
-        }
+
 
 
     }

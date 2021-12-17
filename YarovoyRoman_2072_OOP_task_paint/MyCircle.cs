@@ -1,57 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.Windows.Forms;
+﻿using System.Drawing;
 namespace task_paint
 {
     class MyCircle : Figure
     {
-
-        Points point;
-
-
-        public MyCircle(int PointStartX, int PointEndX, int PointStartY, int PointEndY)
+        int height, width;
+        public MyCircle(int PointStartX, int PointStartY, int height, int width)
         {
-            point.PointStartX = PointStartX;
-            point.PointEndX = PointEndX;
-            point.PointStartY = PointStartY;
-            point.PointEndY = PointEndY;
 
+            x = PointStartX;
+            y = PointStartY;
+            this.height = height;
+            this.width = width;
 
         }
-
-        public override void Draw(Graphics gr) {
-        x = point.PointStartX;
-        y = point.PointStartY;
-        Rectangle rectangle = new Rectangle();
-        rectangle.X = Math.Min(x, point.PointEndX);
-        rectangle.Y = Math.Min(y, point.PointEndY);
-        rectangle.Height = Math.Abs(y - point.PointEndY)/2;
-        rectangle.Width = Math.Abs(x - point.PointEndX)/2;
-
-
-        gr.DrawEllipse(new Pen(Color.Black,5), rectangle);
-            
-           
-        }
-        public override Figure Move(int pointX, int pointY,int pointEndX, int pointEndY)
+        public override void Draw(Graphics gr)
         {
-            int deltaX = Math.Abs(pointX - point.PointEndX);
-            int deltaY = Math.Abs(pointY - point.PointEndY);
-            Figure figure = new MyCircle( pointX,  pointY,  pointEndX,  pointEndY);
-            return figure;
+
+            Rectangle rectangle = new Rectangle();
+            rectangle.X = x;
+            rectangle.Y = y;
+            rectangle.Height = height;
+            rectangle.Width = width;
+            gr.DrawEllipse(new Pen(Color.Black, 5), rectangle);
+        }
+        public override void Move(int pointX, int pointY)
+        {
+            x = pointX;
+            y = pointY;
 
         }
         public override Figure IsPointInside(int pointX, int pointY)
         {
 
             bool IsPointsInside1;
-            Figure figure = new MyCircle(point.PointStartX, point.PointEndX, point.PointStartY, point.PointEndY);
+            Figure figure = new MyRectangle(x, y, height, width);
 
-            if ((pointX <= point.PointEndX) && (pointX >= point.PointStartX) && ((pointY <= point.PointEndY) && (pointY >= point.PointStartY)))
+            if ((pointX <= x + width) && (pointX >= x) && ((pointY <= y + height) && (pointY >= y)))
             {
                 IsPointsInside1 = true;
             }
@@ -73,5 +57,10 @@ namespace task_paint
 
 
         }
+
+
+
+
     }
+
 }

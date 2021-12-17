@@ -1,36 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace task_paint
 {
-    class Wagon:Figure
+    class Wagon : Figure
     {
         Figure myRectangle1;
         Figure myCircle1;
         Figure myCircle2;
-        Points point;
-
-        public Wagon(int PointStartX, int PointEndX, int PointStartY, int PointEndY)
+        int height, width;
+        public Wagon(int PointStartX, int PointStartY, int height, int width)
         {
-            point.PointStartX = PointStartX;
-            point.PointEndX = PointEndX;
-            point.PointStartY = PointStartY;
-            point.PointEndY = PointEndY;
 
+            x = PointStartX;
+            y = PointStartY;
+            this.height = height;
+            this.width = width;
 
         }
 
-        public override void Draw(Graphics gr )
+        public override void Draw(Graphics gr)
         {
-            int width = Math.Abs(point.PointStartX - point.PointEndX);
-            int height = Math.Abs(point.PointStartY - point.PointEndY);
-            myRectangle1 = new MyRectangle( point.PointStartX,  point.PointEndX,  point.PointStartY+height*1/3, point.PointEndY-height*1/3);
-            myCircle1 = new MyCircle(point.PointStartX, point.PointEndX, point.PointStartY+height*2/3, point.PointEndY) ;
-            myCircle2 = new MyCircle(point.PointStartX+width/2, point.PointEndX+width/2, point.PointStartY + height*2/3, point.PointEndY);
+
+            myRectangle1 = new MyRectangle(x, y, height, width);
+            myCircle1 = new MyCircle(x, y + height, height / 2, width / 2);
+            myCircle2 = new MyCircle(x + width / 2, y + height, height / 2, width / 2);
             myRectangle1.Draw(gr);
             myCircle1.Draw(gr);
             myCircle2.Draw(gr);
@@ -40,22 +33,19 @@ namespace task_paint
 
 
         }
-        public override Figure Move(int pointX, int pointEndX, int pointY, int pointEndY)
+        public override void Move(int pointX, int pointY)
         {
-
-            int deltaX = Math.Abs(pointX - point.PointEndX);
-            int deltaY = Math.Abs(pointY - point.PointEndY);
-            Figure figure = new Wagon( pointX,  pointEndX,  pointY,  pointEndY);
-            return figure;
+            x = pointX;
+            y = pointY;
 
         }
         public override Figure IsPointInside(int pointX, int pointY)
         {
 
             bool IsPointsInside1;
-            Figure figure = new Wagon(point.PointStartX, point.PointEndX, point.PointStartY, point.PointEndY);
+            Figure figure = new Wagon(x, y, height, width);
 
-            if ((pointX <= point.PointEndX) && (pointX >= point.PointStartX) && ((pointY <= point.PointEndY) && (pointY >= point.PointStartY)))
+            if ((pointX <= x + width) && (pointX >= x) && ((pointY <= (y + height) + height / 2) && (pointY >= y)))
             {
                 IsPointsInside1 = true;
             }

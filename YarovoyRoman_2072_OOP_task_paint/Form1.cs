@@ -22,7 +22,7 @@ namespace task_paint
         protected bool IsMouseDown=false;
         protected Point PointStart;
         protected Point PointEnd;
-        Points point = new Points(0, 0, 0, 0,0,0,0,0);
+        Points point = new Points(0, 0, 0, 0);
         Container container = new Container();
         Figure figureMove;
 
@@ -46,13 +46,12 @@ namespace task_paint
         {
 
 
-            if (!radioMove.Checked)
-            {
+            
                 IsMouseDown = true;
                 PointStart = e.Location;
                 point.PointStartX = PointStart.X;
                 point.PointStartY = PointStart.Y;
-            }
+           
             if (radioMove.Checked) {
                 figureMove = null;
                 foreach (Figure figure in container) {
@@ -72,8 +71,7 @@ namespace task_paint
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (!radioMove.Checked)
-            {
+           
                 if (IsMouseDown == true)
                 {
                     PointEnd = e.Location;
@@ -82,62 +80,92 @@ namespace task_paint
                 }
                 IsMouseDown = false;
 
-              
-            }
 
 
 
-            if (radioButton1.Checked)
 
-            {
-                Figure rectangle = new MyRectangle( point.PointStartX, point.PointEndX, point.PointStartY, point.PointEndY);
-                container.AddItem(rectangle);
+
+            if (figureRectangle.Checked)
+            { 
+
+                if (point.PointStartX < point.PointEndX) {
+                    Figure rectangle = new MyRectangle(point.PointStartX, point.PointStartY,Math.Abs(point.PointStartY-point.PointEndY), Math.Abs(point.PointStartX - point.PointEndX));
+                    container.AddItem(rectangle);
+                }
+                else if (point.PointStartX > point.PointEndX) {
+                    Figure rectangle = new MyRectangle(point.PointEndX, point.PointEndY, Math.Abs(point.PointStartY - point.PointEndY), Math.Abs(point.PointStartX - point.PointEndX));
+                    container.AddItem(rectangle);
+                }
+                
             }
-            if (radioButton2.Checked)
+            if (figureCircle.Checked)
             {
-                Figure circle = new MyCircle(point.PointStartX, point.PointEndX, point.PointStartY, point.PointEndY);
-                container.AddItem(circle);
+                if (point.PointStartX < point.PointEndX)
+                {
+                    Figure circle = new MyCircle(point.PointStartX, point.PointStartY, Math.Abs(point.PointStartY - point.PointEndY), Math.Abs(point.PointStartX - point.PointEndX));
+                    container.AddItem(circle);
+                }
+                else if (point.PointStartX > point.PointEndX)
+                {
+                    Figure circle = new MyCircle(point.PointEndX, point.PointEndY, Math.Abs(point.PointStartY - point.PointEndY), Math.Abs(point.PointStartX - point.PointEndX));
+                    container.AddItem(circle);
+                }
             }
-            if (radioButton3.Checked)
+            if (figureWagon.Checked)
             {
-                Figure wagon = new Wagon(point.PointStartX, point.PointEndX, point.PointStartY, point.PointEndY);
-                container.AddItem(wagon);
+                if (point.PointStartX < point.PointEndX)
+                {
+                    Figure wagon = new Wagon(point.PointStartX, point.PointStartY, Math.Abs(point.PointStartY - point.PointEndY), Math.Abs(point.PointStartX - point.PointEndX));
+                    container.AddItem(wagon);
+                }
+                else if (point.PointStartX > point.PointEndX)
+                {
+                    Figure wagon = new Wagon(point.PointEndX, point.PointEndY, Math.Abs(point.PointStartY - point.PointEndY), Math.Abs(point.PointStartX - point.PointEndX));
+                    container.AddItem(wagon);
+                }
             }
-            if (radioButton4.Checked)
+            if (figureWagonCoal.Checked)
             {
-                Figure wagonCoal = new WagonCoal(point.PointStartX, point.PointEndX, point.PointStartY, point.PointEndY);
-                container.AddItem(wagonCoal);
+                if (point.PointStartX < point.PointEndX)
+                {
+                    Figure wagonCoal = new WagonCoal(point.PointStartX, point.PointStartY, Math.Abs(point.PointStartY - point.PointEndY), Math.Abs(point.PointStartX - point.PointEndX));
+                    container.AddItem(wagonCoal);
+                }
+                else if (point.PointStartX > point.PointEndX)
+                {
+                    Figure wagonCoal = new WagonCoal(point.PointEndX, point.PointEndY, Math.Abs(point.PointStartY - point.PointEndY), Math.Abs(point.PointStartX - point.PointEndX));
+                    container.AddItem(wagonCoal);
+                }
             }
             if (radioMove.Checked)
             {
-                point.PointMoveStartX = e.X;
-                point.PointMoveStartY = e.Y;
-                point.PointMoveEndX = point.PointMoveStartX + Math.Abs(point.PointStartX - point.PointEndX);
-                point.PointMoveEndY = point.PointMoveStartY + Math.Abs(point.PointStartY - point.PointEndY);
-
-                if (figureMove != null) {
-                    container.Reset(figureMove);
-                    container.AddItem(figureMove.Move(point.PointMoveStartX, point.PointMoveEndX, point.PointMoveStartY, point.PointMoveEndY));
-                   
+                foreach (Figure figure in container) {
+                    if (figure.IsPointInside(point.PointStartX, point.PointStartY) != null) {
+                        figure.Move(e.X, e.Y);
+                    }
                 }
-
 
                 
                 
             }
 
-            if (radioButton6.Checked)
+            if (figureTrain.Checked)
             {
-                Figure train = new Train(point.PointStartX, point.PointEndX, point.PointStartY, point.PointEndY);
-                container.AddItem(train);
+                if (point.PointStartX < point.PointEndX)
+                {
+                    Figure train = new Train(point.PointStartX, point.PointStartY, Math.Abs(point.PointStartY - point.PointEndY), Math.Abs(point.PointStartX - point.PointEndX));
+                    container.AddItem(train);
+                }
+                else if (point.PointStartX > point.PointEndX)
+                {
+                    Figure train = new Train(point.PointEndX, point.PointEndY, Math.Abs(point.PointStartY - point.PointEndY), Math.Abs(point.PointStartX - point.PointEndX));
+                    container.AddItem(train);
+                }
             }
             if (radioRemove.Checked)
             {
-                   
-                if (figureMove != null)
-                { 
-                    container.Reset(figureMove);
-                }
+
+                container.Reset();
             }
           
             panel1.Refresh();

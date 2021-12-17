@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.figureRectangle = new System.Windows.Forms.RadioButton();
+            this.figureCircle = new System.Windows.Forms.RadioButton();
+            this.figureWagon = new System.Windows.Forms.RadioButton();
+            this.figureWagonCoal = new System.Windows.Forms.RadioButton();
             this.radioMove = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.figureTrain = new System.Windows.Forms.RadioButton();
             this.radioRemove = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
@@ -51,53 +51,53 @@
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
-            // radioButton1
+            // figureRectangle
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.radioButton1.Location = new System.Drawing.Point(0, 700);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(74, 0);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Rectangle";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.figureRectangle.AutoSize = true;
+            this.figureRectangle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.figureRectangle.Location = new System.Drawing.Point(0, 700);
+            this.figureRectangle.Name = "figureRectangle";
+            this.figureRectangle.Size = new System.Drawing.Size(74, 0);
+            this.figureRectangle.TabIndex = 0;
+            this.figureRectangle.TabStop = true;
+            this.figureRectangle.Text = "Rectangle";
+            this.figureRectangle.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // figureCircle
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.radioButton2.Location = new System.Drawing.Point(74, 700);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(51, 0);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Circle";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.figureCircle.AutoSize = true;
+            this.figureCircle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.figureCircle.Location = new System.Drawing.Point(74, 700);
+            this.figureCircle.Name = "figureCircle";
+            this.figureCircle.Size = new System.Drawing.Size(51, 0);
+            this.figureCircle.TabIndex = 2;
+            this.figureCircle.TabStop = true;
+            this.figureCircle.Text = "Circle";
+            this.figureCircle.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // figureWagon
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.radioButton3.Location = new System.Drawing.Point(125, 700);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(60, 0);
-            this.radioButton3.TabIndex = 3;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Wagon";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.figureWagon.AutoSize = true;
+            this.figureWagon.Dock = System.Windows.Forms.DockStyle.Left;
+            this.figureWagon.Location = new System.Drawing.Point(125, 700);
+            this.figureWagon.Name = "figureWagon";
+            this.figureWagon.Size = new System.Drawing.Size(60, 0);
+            this.figureWagon.TabIndex = 3;
+            this.figureWagon.TabStop = true;
+            this.figureWagon.Text = "Wagon";
+            this.figureWagon.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // figureWagonCoal
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.radioButton4.Location = new System.Drawing.Point(185, 700);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(81, 0);
-            this.radioButton4.TabIndex = 4;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "WagonCoal";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.figureWagonCoal.AutoSize = true;
+            this.figureWagonCoal.Dock = System.Windows.Forms.DockStyle.Left;
+            this.figureWagonCoal.Location = new System.Drawing.Point(185, 700);
+            this.figureWagonCoal.Name = "figureWagonCoal";
+            this.figureWagonCoal.Size = new System.Drawing.Size(81, 0);
+            this.figureWagonCoal.TabIndex = 4;
+            this.figureWagonCoal.TabStop = true;
+            this.figureWagonCoal.Text = "WagonCoal";
+            this.figureWagonCoal.UseVisualStyleBackColor = true;
             // 
             // radioMove
             // 
@@ -111,17 +111,17 @@
             this.radioMove.Text = "Move";
             this.radioMove.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // figureTrain
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.radioButton6.Location = new System.Drawing.Point(318, 700);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(49, 0);
-            this.radioButton6.TabIndex = 6;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Train";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.figureTrain.AutoSize = true;
+            this.figureTrain.Dock = System.Windows.Forms.DockStyle.Left;
+            this.figureTrain.Location = new System.Drawing.Point(318, 700);
+            this.figureTrain.Name = "figureTrain";
+            this.figureTrain.Size = new System.Drawing.Size(49, 0);
+            this.figureTrain.TabIndex = 6;
+            this.figureTrain.TabStop = true;
+            this.figureTrain.Text = "Train";
+            this.figureTrain.UseVisualStyleBackColor = true;
             // 
             // radioRemove
             // 
@@ -139,14 +139,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(803, 520);
             this.Controls.Add(this.radioRemove);
-            this.Controls.Add(this.radioButton6);
+            this.Controls.Add(this.figureTrain);
             this.Controls.Add(this.radioMove);
-            this.Controls.Add(this.radioButton4);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.figureWagonCoal);
+            this.Controls.Add(this.figureWagon);
+            this.Controls.Add(this.figureCircle);
+            this.Controls.Add(this.figureRectangle);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -159,12 +159,12 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton figureRectangle;
+        private System.Windows.Forms.RadioButton figureCircle;
+        private System.Windows.Forms.RadioButton figureWagon;
+        private System.Windows.Forms.RadioButton figureWagonCoal;
         private System.Windows.Forms.RadioButton radioMove;
-        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton figureTrain;
         private System.Windows.Forms.RadioButton radioRemove;
     }
 }

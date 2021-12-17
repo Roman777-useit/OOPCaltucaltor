@@ -1,51 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace task_paint
 {
-    class Train:Figure
+    class Train : Figure
     {
         Wagon wagon1;
         Wagon wagon2;
         Wagon wagon3;
-        Points point;
-        public Train(int PointStartX, int PointEndX, int PointStartY, int PointEndY)
+        int height, width;
+        public Train(int PointStartX, int PointStartY, int height, int width)
         {
-            point.PointStartX = PointStartX;
-            point.PointEndX = PointEndX;
-            point.PointStartY = PointStartY;
-            point.PointEndY = PointEndY;
 
+            x = PointStartX;
+            y = PointStartY;
+            this.height = height;
+            this.width = width;
 
         }
         public override void Draw(Graphics gr)
         {
-            int width = Math.Abs(point.PointEndX - point.PointStartX);
-            int height = Math.Abs(point.PointEndY - point.PointStartY);
-            wagon1= new Wagon(point.PointStartX, point.PointEndX-width*2/3, point.PointStartY, point.PointEndY);
-            wagon2 = new Wagon(point.PointEndX-width*2/3, point.PointEndX - width*1/3, point.PointStartY, point.PointEndY);
-            wagon3 = new Wagon(point.PointEndX-width*1/3, point.PointEndX, point.PointStartY, point.PointEndY);
+            wagon1 = new Wagon(x, y, height, width);
+            wagon2 = new Wagon(x + width, y, height, width);
+            wagon3 = new Wagon(x + 2 * width, y, height, width);
             wagon1.Draw(gr);
             wagon2.Draw(gr);
             wagon3.Draw(gr);
         }
-        public override Figure Move(int pointX, int pointEndX, int pointY, int pointEndY)
+        public override void Move(int pointX, int pointY)
         {
-
-            return new Train(pointX, pointEndX, pointY, pointEndY);
+            x = pointX;
+            y = pointY;
 
         }
         public override Figure IsPointInside(int pointX, int pointY)
         {
 
             bool IsPointsInside1;
-            Figure figure = new Train(point.PointStartX, point.PointEndX, point.PointStartY, point.PointEndY);
+            Figure figure = new Train(x, y, height, width);
 
-            if ((pointX <= point.PointEndX) && (pointX >= point.PointStartX) && ((pointY <= point.PointEndY) && (pointY >= point.PointStartY)))
+            if ((pointX <= (x + width) + width * 2) && (pointX >= y) && ((pointY <= (y + height) + height / 2) && (pointY >= y)))
             {
                 IsPointsInside1 = true;
             }
