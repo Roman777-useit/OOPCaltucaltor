@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Container.cs" />
-    <Compile Include="Points.cs" />
     <Compile Include="Figure.cs" />
     <Compile Include="MyCircle.cs" />
     <Compile Include="Form1.cs">

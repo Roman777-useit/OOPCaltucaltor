@@ -39,29 +39,20 @@ namespace task_paint
             y = pointY;
 
         }
-        public override Figure IsPointInside(int pointX, int pointY)
+        public override bool IsPointInside(int pointX, int pointY)
         {
 
-            bool IsPointsInside1;
-            Figure figure = new Wagon(x, y, height, width);
+            
 
             if ((pointX <= x + width) && (pointX >= x) && ((pointY <= (y + height) + height / 2) && (pointY >= y)))
             {
-                IsPointsInside1 = true;
+                return true;
             }
             else
             {
-                IsPointsInside1 = false;
+                return false;
             }
-            if (IsPointsInside1 == true)
-            {
-                return figure;
-
-            }
-            else
-            {
-                return null;
-            }
+            
 
 
 
